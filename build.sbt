@@ -2,7 +2,25 @@ version := "1.0.0"
 
 scalaVersion := "2.10.2"
 
-// TODO Remove as soon as spray is on Maven Cental
+name := "angular-spray-seed"
+
+// webapp task
+resourceGenerators in Compile <+= (resourceManaged, baseDirectory) map { (managedBase, base) =>
+  val webappBase = base / "src" / "main" / "webapp"
+  for {
+    (from, to) <- webappBase ** "*" x rebase(webappBase, managedBase / "main" / "webapp")
+  } yield {
+    Sync.copy(from, to)
+    to
+  }
+}
+
+// spray-resolver setting
+seq(Revolver.settings: _*)
+
+// watch webapp files
+watchSources <+= baseDirectory map { _ / "src" / "main" / "webapp" }
+
 resolvers += "spray repo" at "http://repo.spray.io"
 
 libraryDependencies ++= Seq(
@@ -22,3 +40,5 @@ scalacOptions ++= Seq(
   "-target:jvm-1.6",
   "-encoding", "UTF-8"
 )
+
+

@@ -6,49 +6,45 @@ import scala.concurrent.duration.FiniteDuration
 import spray.can.Http
 import spray.http.MediaTypes._
 import spray.httpx.SprayJsonSupport
-import spray.routing.{ HttpServiceActor, Route }
+import spray.routing.{HttpService, HttpServiceActor, Route}
+import spray.json.DefaultJsonProtocol
 
-object SprayService {
 
-  /**
-   * Factory for `akka.actor.Props` for [[service.SprayService]].
-   */
-  def apply(interface: String, port: Int, timeout: FiniteDuration): Props =
-    Props(new SprayService(interface, port, timeout))
+case class Message(message: String)
+
+object MessageJsonProtocol extends DefaultJsonProtocol {
+  implicit val format = jsonFormat1(Message)
 }
 
 /**
- * Service is providing
- *   - static resources from the `web` directory
- *   - a REST-ful API under `api/messages/`
+ * Spray service
+ *   - a REST under `spray-json-message/`
+ *   - a HTML under `spray-html/`
  */
-class SprayService(interface: String, port: Int, timeout: FiniteDuration) extends HttpServiceActor with ActorLogging {
+trait SprayService extends HttpService {
 
-  import SprayService._
-  import SprayJsonSupport._
-  import context.dispatcher
+  import MessageJsonProtocol._
+  import spray.httpx.SprayJsonSupport._
 
-  IO(Http)(context.system) ! Http.Bind(self, interface, port)
-
-  override def receive: Receive =
-    runRoute(serviceRoute ~ staticRoute)
-
-  def serviceRoute: Route =
-    path("service") {
+  def adRoute : Route =
+    path( "spray-json-message" ) {
+      get {
+        complete {
+          Message("Hello mama!")
+        }
+      }
+    } ~
+    path("spray-html") {
       get {
         respondWithMediaType(`text/html`) {
           complete {
             <html>
               <body>
-                <h1><i>Spray stack</i> is up and running...</h1>
+                <h1>Hello papa!</h1>
               </body>
             </html>
           }
         }
       }
     }
-
-  def staticRoute: Route =
-    path("")(getFromResource("web/index.html")) ~ getFromResourceDirectory("web")
-
 }
