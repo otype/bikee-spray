@@ -22,7 +22,14 @@ $ cd angular-spray-seed
 $ sbt run
 ```
 
+Run the following code to start angular-spray-seed project with continous buils. Project is automatically updated on any code change!
+```bash
+$ cd angular-spray-seed
+$ sbt ~re-start
+```
+
 ### See
 
 * Angular seed application at http://localhost:8080/
-* Spray service at http://localhost:8080/service
+* Spray html example at http://localhost:8080/spray-html
+* Spray json example at http://localhost:8080/spray-json-message
