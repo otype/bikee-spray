@@ -19,7 +19,7 @@ resourceGenerators in Compile <+= (resourceManaged, baseDirectory) map { (manage
 seq(Revolver.settings: _*)
 
 // watch webapp files
-watchSources <+= baseDirectory map { _ / "src" / "main" / "webapp" }
+watchSources <++= baseDirectory map { path => ((path / "src" / "main" / "webapp") ** "*").get }
 
 resolvers += "spray repo" at "http://repo.spray.io"
 
