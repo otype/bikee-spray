@@ -18,7 +18,5 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "angular": "1.2.17"
-  }
+  "dependencies": {}
 }
