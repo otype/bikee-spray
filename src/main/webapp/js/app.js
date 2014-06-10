@@ -27,7 +27,8 @@ angular
     'mwwc.msgCtrl',
     'mwwc.rootCtrl',
     'mwwc.loginCtrl',
-    'mwwc.logoutCtrl'
+    'mwwc.logoutCtrl',
+    'mwwc.alertDemoCtrl'
   ])
   .run(['$rootScope', '$location', '$route', 'AUTH_EVENTS', '$timeout',
     function ($rootScope, $location, $route, AUTH_EVENTS, $timeout) {

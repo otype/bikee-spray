@@ -6,7 +6,25 @@ angular.module('mwwc.menuCtrl', [])
     };
   }]);
 
-angular.module('mwwc.msgCtrl', [])
+angular.module('mwwc.alertDemoCtrl', [])
+  .controller('AlertDemoCtrl', ['$scope', function ($scope) {
+    $scope.alerts = [
+      { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+      { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+    ];
+
+    $scope.addAlert = function () {
+      console.log('add alert');
+      $scope.alerts.push({msg: 'Another alert!'});
+    };
+
+    $scope.closeAlert = function (index) {
+      console.log('close alert: ' + index);
+      $scope.alerts.splice(index, 1);
+    };
+  }]);
+
+angular.module('mwwc.msgCtrl', ['ui.bootstrap'])
   .controller('MsgCtrl', ['$scope', 'auth', function ($scope, auth) {
     'use strict';
     $scope.message = 'loading...';
