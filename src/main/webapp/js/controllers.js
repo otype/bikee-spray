@@ -22,6 +22,8 @@ angular.module('mwwc.alertDemoCtrl', [])
       console.log('close alert: ' + index);
       $scope.alerts.splice(index, 1);
     };
+
+    $scope.singleModel = 1;
   }]);
 
 angular.module('mwwc.msgCtrl', ['ui.bootstrap'])
