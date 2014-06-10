@@ -12,8 +12,7 @@ import spray.routing._
  */
 class ServiceActor
   extends Actor
-  with SprayService
-{
+  with SprayService {
 
   def actorRefFactory = context
 

@@ -1,13 +1,13 @@
 package service
 
-import akka.actor.{ ExtendedActorSystem, Extension, ExtensionKey }
+import akka.actor.{ExtendedActorSystem, Extension, ExtensionKey}
 
 object ServiceSettings extends ExtensionKey[ServiceSettings]
 
 /**
  * The settings for Spray backend:
- *   - `interface`: the network interface the service gets bound to, e.g. `"localhost"`.
- *   - `port`: the port the service gets bound to, e.g. `8080`.
+ * - `interface`: the network interface the service gets bound to, e.g. `"localhost"`.
+ * - `port`: the port the service gets bound to, e.g. `8080`.
  */
 class ServiceSettings(system: ExtendedActorSystem) extends Extension {
 
