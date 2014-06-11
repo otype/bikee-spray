@@ -42,6 +42,13 @@ angular.module('mwwc.rootCtrl', [])
     $scope.auth = auth;
   }]);
 
+angular.module('mwwc.dashboardController', [])
+  .controller('DashboardController', ['$scope', 'auth', function ($scope, auth) {
+    'use strict';
+    $scope.name = auth.profile.given_name || 'you';
+    $scope.auth = auth;
+  }]);
+
 angular.module('mwwc.loginCtrl', [])
   .controller('LoginCtrl', ['$scope', '$location', 'auth', function ($scope, $location, auth) {
     'use strict';
