@@ -64,25 +64,23 @@ angular.module('mwwc.loginCtrl', [])
     $scope.user = '';
     $scope.pass = '';
 
-    function onLoginSuccess() {
-      $scope.$parent.message = '';
-      $location.path('/');
-    }
-
-    function onLoginFailed() {
-      $scope.$parent.message = 'invalid credentials';
-    }
-
     $scope.submit = function () {
       $scope.$parent.message = 'loading...';
       $scope.loading = true;
 
-      auth.signin({
-        connection: 'Username-Password-Authentication',
-        username: $scope.user,
-        password: $scope.pass,
-        scope: 'openid name email'
-      }).then(onLoginSuccess, onLoginFailed)
+      auth
+        .signin({
+          connection: 'Username-Password-Authentication',
+          username: $scope.user,
+          password: $scope.pass,
+          scope: 'openid name email'
+        })
+        .then(function onLoginSuccess() {
+          $scope.$parent.message = '';
+          $location.path('/');
+        }, function onLoginFailed() {
+          $scope.$parent.message = 'invalid credentials';
+        })
         .finally(function () {
           $scope.loading = false;
         });
