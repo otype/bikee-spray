@@ -45,8 +45,17 @@ angular.module('mwwc.rootCtrl', [])
 angular.module('mwwc.dashboardController', [])
   .controller('DashboardController', ['$scope', 'auth', function ($scope, auth) {
     'use strict';
-    $scope.name = auth.profile.given_name || 'you';
+    var capitalizeFirstLetter = function (message) {
+      return (message !== undefined && message !== null)
+        ? message.charAt(0).toUpperCase() + message.substring(1)
+        : message;
+    };
+
+    $scope.name = capitalizeFirstLetter(auth.profile.nickname) || 'you';
     $scope.auth = auth;
+
+    $scope.teamLeft = 'Team 1';
+    $scope.teamRight = 'Team 2';
   }]);
 
 angular.module('mwwc.loginCtrl', [])

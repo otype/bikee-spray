@@ -33,13 +33,6 @@
 <div ng-controller="AlertDemoCtrl">
     <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
     <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
-
-    <h4>Single toggle</h4>
-    <pre>{{singleModel}}</pre>
-    <button type="button" class="btn btn-primary" data-ng-model="singleModel" data-btn-checkbox
-            data-btn-checkbox-true="1" data-btn-checkbox-false="0">
-        Single Toggle
-    </button>
 </div>
 
 <div ng-controller="MsgCtrl">
