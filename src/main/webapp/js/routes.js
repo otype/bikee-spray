@@ -45,8 +45,11 @@ angular.module('mwwc.routes', [])
         .otherwise({ redirectTo: '/login' });
 
       authProvider.init({
+        // TODO: Move this to non-git file!
         domain: 'otype.auth0.com',
+        // TODO: Move this to non-git file!
         clientID: 'gtiifauZ5ibeOK9DyEXFFLHTRUXfb3De',
+        // TODO: Move this to non-git file!
         callbackURL: 'http://localhost:8080/'
       });
 
