@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app="mwwc" >
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
@@ -19,9 +19,10 @@
     <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="./css/app.css">
 
-    <script src="//cdn.auth0.com/w2/auth0-widget-3.1.js" type="text/javascript"></script>
-    <script src="//cdn.auth0.com/w2/auth0-2.0.js"></script>
-    <script src="//cdn.auth0.com/w2/auth0-angular-0.4.js"></script>
+    <!--<script src="//cdn.auth0.com/w2/auth0-widget-3.1.js" type="text/javascript"></script>-->
+    <script src="//cdn.auth0.com/w2/auth0-widget-4.0.min.js" type="text/javascript"></script>
+    <script src="//cdn.auth0.com/w2/auth0-2.0.js" type="text/javascript"></script>
+    <script src="//cdn.auth0.com/w2/auth0-angular-0.4.js" type="text/javascript"></script>
 
     <script src="./js/controllers.js" type="text/javascript"></script>
     <script src="./js/routes.js" type="text/javascript"></script>
@@ -29,23 +30,16 @@
 
     <title>Sample Angular App with Auth0</title>
 </head>
-<body ng-app="mwwc">
-<div ng-controller="AlertDemoCtrl">
-    <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-    <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
-</div>
+<body ng-controller="AppController">
+<nav >
+    <a href="" ng-click="go('/dashboard')">Dashboard</a>
+    <a href="" ng-click="go('/profile')">Profile</a>
+    <a href="" ng-click="go('/login')">Login</a>
+    <a href="" ng-click="go('/logout')">Logout</a>
+</nav>
 
-<div ng-controller="MsgCtrl">
-    <div ng-controller="MenuCtrl">
-        <a href="" ng-click="go('/')">main</a>
-        <a href="" ng-click="go('/dashboard')">Dashboard</a>
-        <a href="" ng-click="go('/login')">login</a>
-        <a href="" ng-click="go('/logout')">logout</a>
-    </div>
+<div style="margin-top: 10px;">{{message}}</div>
 
-    <div style="margin-top: 10px;">{{message}}</div>
-    <div ng-view></div>
-</div>
-
+<div ng-view=""></div>
 </body>
 </html>

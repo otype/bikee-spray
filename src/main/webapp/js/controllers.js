@@ -1,89 +1,91 @@
-angular.module('mwwc.menuCtrl', [])
-  .controller('MenuCtrl', ['$scope', '$location', function ($scope, $location) {
+var capitalizeFirstLetter = function (message) {
+  return (message !== undefined && message !== null)
+    ? message.charAt(0).toUpperCase() + message.substring(1)
+    : message;
+};
+
+angular.module('mwwc.UserProfileController', [])
+  .controller('UserProfileController', ['$scope', '$location', 'auth', function ($scope, $location, auth) {
     'use strict';
+
+    var init = function () {
+      if (!auth.isAuthenticated) {
+        $location.path('/logout');
+      }
+    };
+
+    init();
+
+    $scope.auth = auth;
+    $scope.$parent.message = 'This is the UserProfileController';
+  }]);
+
+angular.module('mwwc.AppController', [])
+  .controller('AppController', ['$scope', '$location', 'auth', function ($scope, $location, auth) {
+    'use strict';
+
+    var init = function () {
+      if (!auth.isAuthenticated) {
+        $location.path('/logout');
+      }
+    };
+
+    init();
+
     $scope.go = function (target) {
       $location.path(target);
     };
-  }]);
 
-angular.module('mwwc.alertDemoCtrl', [])
-  .controller('AlertDemoCtrl', ['$scope', function ($scope) {
+    $scope.$parent.message = 'This is the AppController 1';
+    $scope.message = 'This is the AppController 2';
+
     $scope.alerts = [
-      { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-      { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+//      { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+//      { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
     ];
 
     $scope.addAlert = function () {
-      console.log('add alert');
       $scope.alerts.push({msg: 'Another alert!'});
     };
 
     $scope.closeAlert = function (index) {
-      console.log('close alert: ' + index);
       $scope.alerts.splice(index, 1);
     };
-
-    $scope.singleModel = 1;
   }]);
 
-angular.module('mwwc.msgCtrl', ['ui.bootstrap'])
-  .controller('MsgCtrl', ['$scope', 'auth', function ($scope, auth) {
+angular.module('mwwc.DashboardController', [])
+  .controller('DashboardController', ['$scope', '$location', 'auth', function ($scope, $location, auth) {
     'use strict';
-    $scope.message = 'loading...';
-    auth.loaded.then(function () {
-      $scope.message = '';
-    });
-  }]);
 
-angular.module('mwwc.rootCtrl', [])
-  .controller('RootCtrl', ['$scope', 'auth', function ($scope, auth) {
-    'use strict';
-    $scope.$parent.message = 'Welcome ' + auth.profile.name + '!';
-    $scope.auth = auth;
-  }]);
-
-angular.module('mwwc.dashboardController', [])
-  .controller('DashboardController', ['$scope', 'auth', function ($scope, auth) {
-    'use strict';
-    var capitalizeFirstLetter = function (message) {
-      return (message !== undefined && message !== null)
-        ? message.charAt(0).toUpperCase() + message.substring(1)
-        : message;
+    var init = function () {
+      if (!auth.isAuthenticated) {
+        $location.path('/logout');
+      }
     };
 
-    $scope.name = capitalizeFirstLetter(auth.profile.nickname) || 'you';
+    init();
+
     $scope.auth = auth;
 
+    $scope.$parent.message = 'This is the DashboardController';
+
+    $scope.name = capitalizeFirstLetter(auth.profile.nickname) || 'you';
     $scope.teamLeft = 'Team 1';
     $scope.teamRight = 'Team 2';
   }]);
 
+
 angular.module('mwwc.loginCtrl', [])
   .controller('LoginCtrl', ['$scope', '$location', 'auth', function ($scope, $location, auth) {
     'use strict';
-    $scope.user = '';
-    $scope.pass = '';
 
-    $scope.submit = function () {
-      $scope.$parent.message = 'loading...';
-      $scope.loading = true;
+    $scope.login = function () {
+      $scope.$parent.message = 'Loading ...';
+      $scope.doPopupAuth();
+    };
 
-      auth
-        .signin({
-          connection: 'Username-Password-Authentication',
-          username: $scope.user,
-          password: $scope.pass,
-          scope: 'openid name email'
-        })
-        .then(function onLoginSuccess() {
-          $scope.$parent.message = '';
-          $location.path('/');
-        }, function onLoginFailed() {
-          $scope.$parent.message = 'invalid credentials';
-        })
-        .finally(function () {
-          $scope.loading = false;
-        });
+    $scope.doPopupAuth = function() {
+      return auth.signin({popup: true});
     };
 
     $scope.doGoogleAuthWithRedirect = function () {
@@ -95,6 +97,7 @@ angular.module('mwwc.logoutCtrl', [])
   .controller('LogoutCtrl', ['$scope', '$location', 'auth', function ($scope, $location, auth) {
     'use strict';
     auth.signout();
-    $scope.$parent.message = '';
+    $scope.$parent.message = 'This is the LogoutCtrl';
+
     $location.path('/login');
   }]);

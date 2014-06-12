@@ -24,17 +24,12 @@ angular.module('mwwc.routes', [])
         .when('/logout', {
           templateUrl: 'views/logout.html',
           controller: 'LogoutCtrl'
+//          resolve: { isAuthenticated: isAuthenticated }
         })
         .when('/login', {
           templateUrl: 'views/login.html',
           controller: 'LoginCtrl',
           resolve: { authLoaded: authLoaded }
-        })
-        .when('/', {
-          templateUrl: 'views/root.html',
-          controller: 'RootCtrl',
-          /* isAuthenticated will prevent user access to forbidden routes */
-          resolve: { isAuthenticated: isAuthenticated }
         })
         .when('/dashboard', {
           templateUrl: 'views/dashboard.html',
@@ -42,7 +37,13 @@ angular.module('mwwc.routes', [])
           /* isAuthenticated will prevent user access to forbidden routes */
           resolve: { isAuthenticated: isAuthenticated }
         })
-        .otherwise({ redirectTo: '/login' });
+        .when('/profile', {
+          templateUrl: 'views/user_profile.html',
+          controller: 'UserProfileController',
+          /* isAuthenticated will prevent user access to forbidden routes */
+          resolve: { isAuthenticated: isAuthenticated }
+        })
+        .otherwise({ redirectTo: '/dashboard' });
 
       authProvider.init({
         // TODO: Move this to non-git file!

@@ -6,13 +6,11 @@ angular.module('mwwc', [
   'ngRoute',
   'authInterceptor',
   'mwwc.routes',
-  'mwwc.dashboardController',
-  'mwwc.menuCtrl',
-  'mwwc.msgCtrl',
-  'mwwc.rootCtrl',
+  'mwwc.AppController',
+  'mwwc.DashboardController',
+  'mwwc.UserProfileController',
   'mwwc.loginCtrl',
-  'mwwc.logoutCtrl',
-  'mwwc.alertDemoCtrl'
+  'mwwc.logoutCtrl'
 ])
   .run(['$rootScope', '$location', '$route', 'AUTH_EVENTS', '$timeout',
     function ($rootScope, $location, $route, AUTH_EVENTS, $timeout) {
@@ -32,6 +30,5 @@ angular.module('mwwc', [
         // TODO Handle when login fails
         window.alert('login failed');
       });
-    }])
-;
+    }]);
 
