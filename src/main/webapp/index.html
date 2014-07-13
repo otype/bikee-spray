@@ -1,45 +1,157 @@
 <!DOCTYPE html>
 
-<html ng-app="mwwc" >
+<html ng-app="bikee">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" type="text/javascript"></script>
-    <script src="//code.angularjs.org/1.2.17/angular-route.min.js" type="text/javascript"></script>
-    <script src="//code.angularjs.org/1.2.17/angular-cookies.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js" type="text/javascript"></script>
+    <script src="//code.angularjs.org/1.2.19/angular-route.min.js" type="text/javascript"></script>
+    <script src="//code.angularjs.org/1.2.19/angular-cookies.min.js" type="text/javascript"></script>
 
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.js" type="text/javascript"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"
             type="text/javascript"></script>
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap.js" type="text/javascript"></script>-->
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap.min.js" type="text/javascript"></script>-->
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">-->
-    <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="./css/app.css">
 
-    <!--<script src="//cdn.auth0.com/w2/auth0-widget-3.1.js" type="text/javascript"></script>-->
-    <script src="//cdn.auth0.com/w2/auth0-widget-4.0.min.js" type="text/javascript"></script>
-    <script src="//cdn.auth0.com/w2/auth0-2.0.js" type="text/javascript"></script>
-    <script src="//cdn.auth0.com/w2/auth0-angular-0.4.js" type="text/javascript"></script>
+    <!--<script src="//cdn.auth0.com/w2/auth0-widget-4.0.min.js" type="text/javascript"></script>-->
+    <!--<script src="//cdn.auth0.com/w2/auth0-2.0.js" type="text/javascript"></script>-->
+    <!--<script src="//cdn.auth0.com/w2/auth0-angular-0.4.js" type="text/javascript"></script>-->
 
-    <script src="./js/controllers.js" type="text/javascript"></script>
+    <script src="./js/helpers.js" type="text/javascript"></script>
+    <script src="./js/shared/directives.js" type="text/javascript"></script>
+    <script src="./js/shared/filters.js" type="text/javascript"></script>
+    <script src="./js/services/services.js" type="text/javascript"></script>
+    <script src="./js/controllers/appController.js" type="text/javascript"></script>
+    <script src="./js/controllers/dashboardController.js" type="text/javascript"></script>
+    <script src="./js/controllers/modalDemoCtrl.js" type="text/javascript"></script>
+    <script src="./js/controllers/modalInstanceCtrl.js" type="text/javascript"></script>
+    <script src="./js/controllers/loginController.js" type="text/javascript"></script>
+    <script src="./js/controllers/logoutController.js" type="text/javascript"></script>
+    <script src="./js/controllers/orderMessengerController.js" type="text/javascript"></script>
+    <script src="./js/controllers/userProfileController.js" type="text/javascript"></script>
     <script src="./js/routes.js" type="text/javascript"></script>
     <script src="./js/app.js" type="text/javascript"></script>
 
-    <title>Sample Angular App with Auth0</title>
+    <title>Bikee</title>
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>-->
+    <!--<script>-->
+        <!--// This example adds a search box to a map, using the Google Place Autocomplete-->
+        <!--// feature. People can enter geographical searches. The search box will return a-->
+        <!--// pick list containing a mix of places and predicted search terms.-->
+
+        <!--function initialize() {-->
+
+            <!--var markers = [];-->
+            <!--var map = new google.maps.Map(document.getElementById('map-canvas'), {-->
+                <!--mapTypeId: google.maps.MapTypeId.ROADMAP-->
+            <!--});-->
+
+            <!--var defaultBounds = new google.maps.LatLngBounds(-->
+                    <!--new google.maps.LatLng(-33.8902, 151.1759),-->
+                    <!--new google.maps.LatLng(-33.8474, 151.2631));-->
+            <!--map.fitBounds(defaultBounds);-->
+
+            <!--// Create the search box and link it to the UI element.-->
+            <!--var input = /** @type {HTMLInputElement} */(-->
+                    <!--document.getElementById('pac-input'));-->
+            <!--map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);-->
+
+            <!--var searchBox = new google.maps.places.SearchBox(-->
+                    <!--/** @type {HTMLInputElement} */(input));-->
+
+            <!--// [START region_getplaces]-->
+            <!--// Listen for the event fired when the user selects an item from the-->
+            <!--// pick list. Retrieve the matching places for that item.-->
+            <!--google.maps.event.addListener(searchBox, 'places_changed', function () {-->
+                <!--var places = searchBox.getPlaces();-->
+
+                <!--if (places.length == 0) {-->
+                    <!--return;-->
+                <!--}-->
+                <!--for (var i = 0, marker; marker = markers[i]; i++) {-->
+                    <!--marker.setMap(null);-->
+                <!--}-->
+
+                <!--// For each place, get the icon, place name, and location.-->
+                <!--markers = [];-->
+                <!--var bounds = new google.maps.LatLngBounds();-->
+                <!--for (var i = 0, place; place = places[i]; i++) {-->
+                    <!--var image = {-->
+                        <!--url: place.icon,-->
+                        <!--size: new google.maps.Size(71, 71),-->
+                        <!--origin: new google.maps.Point(0, 0),-->
+                        <!--anchor: new google.maps.Point(17, 34),-->
+                        <!--scaledSize: new google.maps.Size(25, 25)-->
+                    <!--};-->
+
+                    <!--// Create a marker for each place.-->
+                    <!--var marker = new google.maps.Marker({-->
+                        <!--map: map,-->
+                        <!--icon: image,-->
+                        <!--title: place.name,-->
+                        <!--position: place.geometry.location-->
+                    <!--});-->
+
+                    <!--markers.push(marker);-->
+
+                    <!--bounds.extend(place.geometry.location);-->
+                <!--}-->
+
+                <!--map.fitBounds(bounds);-->
+            <!--});-->
+            <!--// [END region_getplaces]-->
+
+            <!--// Bias the SearchBox results towards places that are within the bounds of the-->
+            <!--// current map's viewport.-->
+            <!--google.maps.event.addListener(map, 'bounds_changed', function () {-->
+                <!--var bounds = map.getBounds();-->
+                <!--searchBox.setBounds(bounds);-->
+            <!--});-->
+        <!--}-->
+
+        <!--google.maps.event.addDomListener(window, 'load', initialize);-->
+    <!--</script>-->
 </head>
 <body ng-controller="AppController">
-<nav >
-    <a href="" ng-click="go('/dashboard')">Dashboard</a>
-    <a href="" ng-click="go('/profile')">Profile</a>
-    <a href="" ng-click="go('/login')">Login</a>
-    <a href="" ng-click="go('/logout')">Logout</a>
-</nav>
 
-<div style="margin-top: 10px;">{{message}}</div>
 
-<div ng-view=""></div>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bikee</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a ng-click="go('/')">Liefern</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--<div style="width: 700px; height: 700px;">-->
+    <!--<input id="pac-input" class="controls" type="text" placeholder="Search Box">-->
+
+    <!--<div id="map-canvas"></div>-->
+<!--</div>-->
+
+<div class="container">
+    <div style="margin-top: 60px;">{{message}}</div>
+
+    <div ng-view=""></div>
+</div>
+
+<footer>
+
+</footer>
 </body>
 </html>

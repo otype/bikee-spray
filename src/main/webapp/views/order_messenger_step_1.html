@@ -1,0 +1,33 @@
+<div>
+    <h3>Wohin soll geliefert werden?</h3>
+
+    <div class="row">
+        <form name="myForm">
+            <div class="col-md-6">
+                <input type="text" placeholder="Strasse" name="startLocationStreet" data-ng-model="order.startLocation.streetName" size="70">
+                <br/>
+                <input type="text" placeholder="PLZ" name="startLocationZipCode" data-ng-model="order.startLocation.zipCode" size="5">
+                <input type="text" placeholder="Stadt" name="startLocationCity" data-ng-model="order.startLocation.city" size="60">
+            </div>
+            <div class="col-md-6">
+                <input type="text" placeholder="Strasse" name="startLocationStreet" data-ng-model="order.endLocation.streetName" size="70">
+                <br/>
+                <input type="text" placeholder="PLZ" name="startLocationZipCode" data-ng-model="order.endLocation.zipCode" size="5">
+                <input type="text" placeholder="Stadt" name="startLocationCity" data-ng-model="order.endLocation.city" size="60">
+                <br>
+            </div>
+        </form>
+    </div>
+    <div>
+        <div class="btn-group">
+            <label class="btn btn-success" ng-model="radioModel" btn-radio="'now'" uncheckable>Sofort</label>
+            <label class="btn btn-success" ng-model="radioModel" btn-radio="'later'" uncheckable>Später</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <a data-ng-click="go('/order_step_2')">Weiter <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </div>
+</div>

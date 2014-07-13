@@ -1,64 +1,23 @@
 'use strict';
 
-function authLoaded(auth) {
-  return auth.loaded;
-}
-
-function isAuthenticated($q, auth) {
-  var deferred = $q.defer();
-
-  auth.loaded.then(function () {
-    if (auth.isAuthenticated) {
-      deferred.resolve();
-    } else {
-      deferred.reject();
-    }
-  });
-  return deferred.promise;
-}
-
-angular.module('mwwc.routes', [])
-  .config(['$routeProvider', 'authProvider', '$httpProvider',
-    function ($routeProvider, authProvider, $httpProvider) {
-      $routeProvider
-        .when('/logout', {
-          templateUrl: 'views/logout.html',
-          controller: 'LogoutCtrl'
-//          resolve: { isAuthenticated: isAuthenticated }
-        })
-        .when('/login', {
-          templateUrl: 'views/login.html',
-          controller: 'LoginCtrl',
-          resolve: { authLoaded: authLoaded }
-        })
-        .when('/dashboard', {
-          templateUrl: 'views/dashboard.html',
-          controller: 'DashboardController',
-          /* isAuthenticated will prevent user access to forbidden routes */
-          resolve: { isAuthenticated: isAuthenticated }
-        })
-        .when('/profile', {
-          templateUrl: 'views/user_profile.html',
-          controller: 'UserProfileController',
-          /* isAuthenticated will prevent user access to forbidden routes */
-          resolve: { isAuthenticated: isAuthenticated }
-        })
-        .otherwise({ redirectTo: '/dashboard' });
-
-      authProvider.init({
-        // TODO: Move this to non-git file!
-        domain: 'otype.auth0.com',
-        // TODO: Move this to non-git file!
-        clientID: 'gtiifauZ5ibeOK9DyEXFFLHTRUXfb3De',
-        // TODO: Move this to non-git file!
-        callbackURL: 'http://localhost:8080/'
-      });
-
-
-      // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
-      // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might
-      // want to check the delegation-token example
-      $httpProvider.interceptors.push('authInterceptor');
-    }])
-;
-
+angular.module('bikee.routes', [])
+  .config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+      .when('/order', {
+        templateUrl: 'views/order_messenger_step_1.html',
+        controller: 'OrderMessengerController'
+      })
+      .when('/order_step_2', {
+        templateUrl: 'views/order_messenger_step_2.html',
+        controller: 'OrderMessengerController'
+      })
+      .when('/order_pre_confirmation', {
+        templateUrl: 'views/order_pre_confirmation.html',
+        controller: 'OrderMessengerController'
+      })
+      .when('/order_error', {
+        templateUrl: 'views/order_error.html',
+        controller: 'OrderMessengerController'
+      })
+      .otherwise({ redirectTo: '/order' });
+  }]);

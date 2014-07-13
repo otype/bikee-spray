@@ -1,5 +1,5 @@
 var TimepickerDemoCtrl = function ($scope) {
-  $scope.mytime = new Date();
+  $scope.orderTime = new Date();
 
   $scope.hstep = 1;
   $scope.mstep = 15;
@@ -18,14 +18,14 @@ var TimepickerDemoCtrl = function ($scope) {
     var d = new Date();
     d.setHours( 14 );
     d.setMinutes( 0 );
-    $scope.mytime = d;
+    $scope.orderTime = d;
   };
 
   $scope.changed = function () {
-    console.log('Time changed to: ' + $scope.mytime);
+    console.log('Time changed to: ' + $scope.orderTime);
   };
 
   $scope.clear = function() {
-    $scope.mytime = null;
+    $scope.orderTime = null;
   };
 };

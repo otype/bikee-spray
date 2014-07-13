@@ -1,10 +1,10 @@
 {
-  "name": "mwwc-spray",
+  "name": "bikee",
   "version": "0.0.1",
   "authors": [
     "Hans-Gunther Schmidt <hans@otype.de>"
   ],
-  "description": "Meltwater World Cup",
+  "description": "Bikee",
   "keywords": [
     "angularjs",
     "spray"

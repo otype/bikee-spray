@@ -20,5 +20,4 @@ class ServiceSettings(system: ExtendedActorSystem) extends Extension {
    * The port the Spray service gets bound to, e.g. `8080`.
    */
   val port: Int = system.settings.config getInt "service.port"
-
 }

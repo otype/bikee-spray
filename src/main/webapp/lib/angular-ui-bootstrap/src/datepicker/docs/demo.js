@@ -1,11 +1,11 @@
 var DatepickerDemoCtrl = function ($scope) {
   $scope.today = function() {
-    $scope.dt = new Date();
+    $scope.orderDate = new Date();
   };
   $scope.today();
 
   $scope.clear = function () {
-    $scope.dt = null;
+    $scope.orderDate = null;
   };
 
   // Disable weekend selection
