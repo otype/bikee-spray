@@ -1,31 +1,23 @@
-<div>
-    <h3>An wen soll geliefert werden?</h3>
+<!-- FORM -->
+   <form class="form" name="myForm">
+    <div class="form-group">
 
+<!-- NAME SENDER -->
     <div class="row">
-        <form name="myForm">
+         <h3>An wen soll geliefert werden?</h3>
             <div class="col-md-6">
-                <input type="text" placeholder="Versender Name" name="startLocationSenderName" data-ng-model="order.startLocation.senderName" size="60">
+                <input type="text" class="form-control" placeholder="Versender Name" name="startLocationSenderName" data-ng-model="order.startLocation.senderName">
             </div>
             <div class="col-md-6">
-                <input type="text" placeholder="Empfänger Name" name="endLocationRecipientName" data-ng-model="order.endLocation.recipientName" size="60">
+                <input type="text" class="form-control" placeholder="Empfänger Name" name="endLocationRecipientName" data-ng-model="order.endLocation.recipientName">
                 <br>
             </div>
         </form>
     </div>
 
     <div class="row">
-        <!--<div class="col-md-4">-->
-        <!--<p class="input-group">-->
-        <!--<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="order.orderDate" is-open="opened"-->
-        <!--min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions"-->
-        <!--date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>-->
-        <!--<span class="input-group-btn">-->
-        <!--<button type="button" class="btn btn-default" ng-click="open($event)"><i-->
-        <!--class="glyphicon glyphicon-calendar"></i></button>-->
-        <!--</span>-->
-        <!--</p>-->
-        <!--<timepicker data-ng-model="order.orderDate" data-ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>-->
-        <!--</div>-->
+
+        <!-- DATE FÜR SPÄTER -->
         <div class="col-md-4">
             <p class="input-group">
                 <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="order.orderDate" is-open="opened"
@@ -46,4 +38,6 @@
             <a data-ng-click="go('/order_pre_confirmation')">Zur Übersicht <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
+</div>
+</div>
 </div>

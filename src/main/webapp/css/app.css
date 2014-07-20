@@ -1,88 +1,55 @@
-/* app css stylesheet */
-.nav, .pagination, .carousel, .panel-title a {
-    cursor: pointer;
+body {
+padding-top: 70px;
+font-family: 'Abel';
 }
 
-.menu {
-    list-style: none;
-    border-bottom: 0.1em solid black;
-    margin-bottom: 2em;
-    padding: 0 0 0.5em;
+#A {
+background-color: rgb(242, 244, 247); 
 }
 
-.menu:before {
-    content: "[";
+#B {
+background-color: rgb(6, 186, 143);
 }
 
-.menu:after {
-    content: "]";
+#C {
+background-color: rgb(255, 255, 255);
 }
 
-.menu > li {
-    display: inline;
+#D {
+background-color: rgb(242, 244, 247); 
 }
 
-.menu > li:before {
-    content: "|";
-    padding-right: 0.3em;
+#E {
+background-color: rgb(20, 28, 38);
 }
 
-.menu > li:nth-child(1):before {
-    content: "";
-    padding: 0;
+
+.container {
+height: 500px;
+padding-top: 50px;
+padding-bottom: 50px;
 }
 
-/*html, body, #map-canvas {*/
-    /*height: 100%;*/
-    /*width: 50%;*/
-    /*margin: 0px;*/
-    /*padding: 0px*/
-/*}*/
+.navbar-header {
+    float: left;
+    text-align: center;
+    width: 100%;
+    height: 70px; 
+}
+.navbar-brand {
+    float:none;
+    padding: 0px;
+    margin-top: 10px;
+    height: 50px;
+    vertical-align:baseline;
+}
 
-/*.controls {*/
-    /*margin-top: 16px;*/
-    /*border: 1px solid transparent;*/
-    /*border-radius: 2px 0 0 2px;*/
-    /*box-sizing: border-box;*/
-    /*-moz-box-sizing: border-box;*/
-    /*height: 32px;*/
-    /*outline: none;*/
-    /*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);*/
-/*}*/
+.footer {
+height: 200px;
+padding-top: 50px;
+padding-bottom: 50px;
+}
 
-/*#pac-input {*/
-    /*background-color: #fff;*/
-    /*padding: 0 11px 0 13px;*/
-    /*width: 400px;*/
-    /*font-family: Roboto;*/
-    /*font-size: 15px;*/
-    /*font-weight: 300;*/
-    /*text-overflow: ellipsis;*/
-/*}*/
-
-/*#pac-input:focus {*/
-    /*border-color: #4d90fe;*/
-    /*margin-left: -1px;*/
-    /*padding-left: 14px; *//* Regular padding-left + 1. */
-    /*width: 401px;*/
-/*}*/
-
-/*.pac-container {*/
-    /*font-family: Roboto;*/
-/*}*/
-
-/*#type-selector {*/
-    /*color: #fff;*/
-    /*background-color: #4d90fe;*/
-    /*padding: 5px 11px 0px 11px;*/
-/*}*/
-
-/*#type-selector label {*/
-    /*font-family: Roboto;*/
-    /*font-size: 13px;*/
-    /*font-weight: 300;*/
-/*}*/
-
-/*#target {*/
-    /*width: 345px;*/
-/*}*/
+.btn-group {
+margin-top: 30px;
+}
