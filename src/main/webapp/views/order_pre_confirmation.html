@@ -4,17 +4,25 @@
     <div class="row">
         <div class="col-md-4">
             <h4>Versender</h4>
+
             <p class="name">{{order.startLocation.senderName}}</p>
+
             <p class="address">
                 {{order.startLocation.streetName}}
                 <br/>
                 {{order.startLocation.zipCode}}
                 {{order.startLocation.city}}
             </p>
+
+            <p class="email">{{order.startLocation.senderEmail}}</p>
+
+            <p class="telephone"> {{order.startLocation.senderTelephone}}</p>
         </div>
         <div class="col-md-4">
             <h4>Empfänger</h4>
+
             <p class="name">{{order.endLocation.recipientName}}</p>
+
             <p class="address">
                 {{order.endLocation.streetName}}
                 <br/>
@@ -28,6 +36,7 @@
         <div class="col-md-12">
             <!--<p>{{ order | json }}</p>-->
             <h4>Lieferdatum</h4>
+
             <p>SOFORT | {{ order.orderDate }}</p>
         </div>
     </div>
@@ -37,7 +46,8 @@
             <p>Bezahlen bei Abholung</p>
         </div>
         <div class="col-md-4">
-            <a data-ng-click="go('/order_error')">Kostenpflichtig bestellen <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a data-ng-click="go('/order_error')">Kostenpflichtig bestellen <span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
 </div>
