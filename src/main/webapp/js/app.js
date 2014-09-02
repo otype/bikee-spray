@@ -6,8 +6,6 @@ angular.module('bikee', [
   'ngRoute',
   'bikee.routes',
   'bikee.AppController',
-//  'bikee.ModalDemoCtrl',
-//  'bikee.ModalInstanceCtrl',
   'bikee.OrderMessengerController'
 ])
   .run(['$rootScope', function ($rootScope) {
