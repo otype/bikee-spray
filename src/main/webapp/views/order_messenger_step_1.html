@@ -2,53 +2,61 @@
 <form class="form" name="myForm">
     <div class="form-group">
 
-<!-- VON WO NACH WO-->
-            <div class="row">
-                <div class="col-md-6">
-                     <h3>Wo soll abgeholt werden?</h3>
-                </div>
-                <div class="col-md-6">
-                     <h3>Wohin soll geliefert werden?</h3>
-                </div>
-            </div>   
-            <div class="row">
-                <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Strasse" name="startLocationStreet" data-ng-model="order.startLocation.streetName">
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Strasse" name="startLocationStreet" data-ng-model="order.endLocation.streetName">
-                </div>
-            </div>   
-            <br/>
-            <div class="row">
-                <div class="col-md-2">
-                    <input type="text" class="form-control" placeholder="PLZ" name="startLocationZipCode" data-ng-model="order.startLocation.zipCode" maxlength="5">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Stadt" name="startLocationCity" data-ng-model="order.startLocation.city">
-                </div>
-                 <div class="col-md-2">
-                    <input type="text" class="form-control" placeholder="PLZ" name="startLocationZipCode" data-ng-model="order.endLocation.zipCode" maxlength="5">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Stadt" name="startLocationCity" data-ng-model="order.endLocation.city">
-                </div>
+        <!-- VON WO NACH WO-->
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Wo soll abgeholt werden?</h3>
             </div>
+            <div class="col-md-6">
+                <h3>Wohin soll geliefert werden?</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Strasse" name="startLocationStreet"
+                       data-ng-model="order.startLocation.streetName">
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Strasse" name="startLocationStreet"
+                       data-ng-model="order.endLocation.streetName">
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="PLZ" name="startLocationZipCode"
+                       data-ng-model="order.startLocation.zipCode" maxlength="5">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Stadt" name="startLocationCity"
+                       data-ng-model="order.startLocation.city">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="PLZ" name="startLocationZipCode"
+                       data-ng-model="order.endLocation.zipCode" maxlength="5">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Stadt" name="startLocationCity"
+                       data-ng-model="order.endLocation.city">
+            </div>
+        </div>
     </div>
 </form>
 
 
 <!-- BOTTOM -->
-    <div class="row text-center">
-        <div class="btn-group">
-            <label class="btn btn-lg btn-default" ng-model="radioModel" btn-radio="'now'" uncheckable>SOFORT ABHOLEN</label>
-            <label class="btn btn-lg btn-default" ng-model="radioModel" btn-radio="'later'" uncheckable>SPÄTER ABHOLEN</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-            <a data-ng-click="go('/order_step_2')">Weiter <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
+<div class="row text-center">
+    <div class="btn-group">
+        <label class="btn btn-lg btn-default" ng-model="radioModel" btn-radio="'now'" uncheckable>SOFORT ABHOLEN</label>
+        <label class="btn btn-lg btn-default" ng-model="radioModel" btn-radio="'later'" uncheckable>SPÄTER
+            ABHOLEN</label>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-2">
+        <a data-ng-click="go('/order_step_2')">Weiter <span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+</div>
+<!--</div>-->
